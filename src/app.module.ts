@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { OrdersModule } from './orders/orders.module';
 import { WabaModule } from './waba/waba.module';
+import { HealthModule } from './health/health.module';
 
 @Module({
   imports: [
@@ -12,8 +13,9 @@ import { WabaModule } from './waba/waba.module';
     AuthModule,
     OrdersModule,
     WabaModule,
+    HealthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }

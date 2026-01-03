@@ -1,0 +1,21 @@
+name: Keep Alive
+
+on:
+  schedule:
+    - cron: '*/14 * * * *' # Every 14 minutes
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Health Endpoint
+        run: |
+          # Replace with your actual Render URL or use a secret
+          # Example: curl -I https://wot-api.onrender.com/api/v1/health
+          if [ -z "${{ secrets.DEPLOYED_URL }}" ]; then
+            echo "URL not set. Please set DEPLOYED_URL secret or hardcode the URL in the workflow file."
+            exit 1
+          else
+             curl -I ${{ secrets.DEPLOYED_URL }}/health
+          fi
